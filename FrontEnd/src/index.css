@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vert: #1f4d3a;
+  --color-or: #b8923a;
+  --color-or-fonce: #8a6a1f;
+  --font-titre: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+body {
+  background-color: #faf8f3;
+  color: #1f2937;
+}
+
+/* Motif géométrique (étoile à huit branches, inspiré des zelliges) :
+   à placer dans un élément relatif, via un <div className="motif-zellige absolute inset-0" /> */
+.motif-zellige {
+  pointer-events: none;
+  background-size: 64px 64px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.2' stroke-width='1'%3E%3Crect x='14' y='14' width='36' height='36'/%3E%3Crect x='14' y='14' width='36' height='36' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Tailwind 4 rend le bouton natif des champs « fichier » invisible (sans fond ni bordure) :
+   on le redessine pour qu'on voie clairement où cliquer. */
+input[type="file"]::file-selector-button {
+  margin-right: 0.75rem;
+  cursor: pointer;
+  border: 1px solid var(--color-vert);
+  border-radius: 0.5rem;
+  background-color: var(--color-vert);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+}
+input[type="file"]::file-selector-button:hover {
+  background-color: var(--color-or-fonce);
+  border-color: var(--color-or-fonce);
+}
+input[type="file"]:disabled::file-selector-button {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
